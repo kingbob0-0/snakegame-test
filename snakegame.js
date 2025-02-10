@@ -118,11 +118,14 @@ function draw() {
     leaderboardDiv.html("");
     
   } else {
-    // 게임 오버 시, 중앙에 GAME OVER 메시지 표시 (Arial 폰트)
+    // 게임 오버 시, 중앙에 GAME OVER 메시지와 최종 점수를 표시 (Arial 폰트)
     fill(255);
     textAlign(CENTER, CENTER);
     textSize(30);
     text("GAME OVER!\nPress SPACE to restart", width / 2, height / 2 - 40);
+    // 최종 점수를 큰 글씨로 추가 표시
+    textSize(50);
+    text("Score: " + score, width / 2, height / 2 + 30);
     
     if (!leaderboardUpdated) {
       updateLeaderboard();
