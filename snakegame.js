@@ -181,9 +181,9 @@ function moveSnake() {
   head.y = (head.y + height) % height;
   snake.unshift(head);
   
-  // 음식(별)을 먹으면 길이 1 증가하고 스코어는 100점씩 증가
+  // 음식(별)을 먹었을 때는 꼬리를 제거하지 않아 뱀의 길이가 1칸 늘어남.
+  // (원래는 growSnake(1)을 호출하여 추가로 늘어나던 부분을 제거함)
   if (head.x === food.x && head.y === food.y) {
-    growSnake(1);
     score += 100;
     spawnFood();
     // 장애물 갯수는 기본 장애물 수 + (먹은 음식 개수)로 계산 (score/100)
@@ -260,6 +260,7 @@ function checkObstacleCollision() {
   }
 }
 
+// 기존 growSnake 함수는 더 이상 사용하지 않으므로 남겨두거나 제거할 수 있습니다.
 function growSnake(n) {
   for (let i = 0; i < n; i++) {
     snake.push(snake[snake.length - 1].copy());
